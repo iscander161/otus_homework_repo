@@ -16,7 +16,7 @@ set_target_properties(guess_the_number PROPERTIES
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
   CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
-    #target_compile_options(guess_the_number PRIVATE -Wall -Wextra -Werror -pedantic)
+    target_compile_options(guess_the_number PRIVATE -Wall -Wextra -Werror -pedantic)
 
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 

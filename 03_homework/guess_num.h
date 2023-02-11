@@ -20,6 +20,12 @@
 const int DEFAULT_MAX_VALUE                     = 101;  /*!< Deafult random value*/
 const unsigned int GAME_PARAM__SHOW_TABLE       = 2;    /*!< Show table of highscores */
 
+#if defined(_WIN32)
+const char SLASH_FOR_PATH = '\\';   /*!< Slash for Windows path */
+#else
+const char SLASH_FOR_PATH = '/';    /*!< Slash for Unix-based OS */
+#endif  /* SLASH FOR PATH */
+
 /**
  * @brief Game initialization
  * @param game_param Game parameters

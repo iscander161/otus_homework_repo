@@ -22,20 +22,25 @@ static void guess_num__show_record_table();
 static void guess_num__update_record_table(std::string username, int attempts);
 static void guess_num__check_score_file();
 
-std::string score_file_pth;
+std::string score_file_pth; /*!< Score File path*/
 
-/*
- *
+/**
+ * @brief Init game function
+ * 
+ * @param score_file_path Path to score file
+ * @param max_val Maximum value of secret number
+ * @param level Game level
+ * @param game_param Game parameters
  */
 void guess_num__init_game(std::string score_file_path, unsigned int max_val, unsigned int level, int game_param)
 {
     (void)level;
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     /* Combine score file path */
-    size_t ind = score_file_path.find_last_of('\\');
+    size_t ind = score_file_path.find_last_of(SLASH_FOR_PATH);
     score_file_path.erase(ind);
     std::cout << score_file_pth << std::endl;
-    score_file_pth = score_file_path + "\\record_table.txt";
+    score_file_pth = score_file_path + SLASH_FOR_PATH + "record_table.txt";
     guess_num__check_score_file();
     switch(game_param)
     {
@@ -84,7 +89,7 @@ static void guess_num__play_game(int max_value, unsigned int level)
 
     secret_number = std::rand() % random_value;
     std::cout << "Hi! Enter your name, please:" << std::endl;
-    std::cin >> user_name;
+    std::getline(std::cin, user_name);
     while(secret_number != random_value)
     {
         ++attempts;
@@ -156,8 +161,8 @@ static void guess_num__update_record_table(std::string username, int attempts)
 
         position_of_user_name = file_content.find(username);
 
-        if(position_of_user_name == -1)
-        {            
+        if(position_of_user_name == static_cast<size_t>(-1))
+        {
             position_of_user_name = file_content.length();            
             user_exist_str = username + " " + std::to_string(attempts) + '\n';
             size_of_old_string = user_exist_str.length() - 1;
