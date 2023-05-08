@@ -9,3 +9,7 @@ add_subdirectory(02_homework/homework)
 add_subdirectory(03_homework)
 add_subdirectory(04_homework)
 add_subdirectory(05_homework)
+
+add_subdirectory(argv_parser)
+
+add_subdirectory(project_work)

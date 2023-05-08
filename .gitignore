@@ -34,6 +34,9 @@
 #VS Code
 .vscode/**
 
+#JetBrains
+.idea/**
+
 # Debug & Release Build folders
 **/**build**/**
 **CMakeLists.txt.user*
